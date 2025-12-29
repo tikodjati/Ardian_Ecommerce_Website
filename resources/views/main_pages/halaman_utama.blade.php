@@ -25,11 +25,19 @@
         <section class="relative h-[95vh] overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0">
-                <img src="{{ asset('images/Gambar_Halaman_Utama_Temp.jpg') }}" 
-                     alt="Louis Vuitton Collection" 
-                     class="absolute inset-0 w-full h-full object-cover opacity-90">
+                <img
+                    src="{{ asset('images/Gambar_Halaman_Utama_Temp.jpg') }}"
+                    alt="Louis Vuitton Collection"
+                    class="absolute inset-0 w-full h-full object-cover"
+                >
+
+                <!-- Dark overlay -->
+                <div class="absolute inset-0 bg-black/20"></div>
+
+                <!-- Gradient / existing overlay -->
                 <div class="absolute inset-0 hero-section"></div>
             </div>
+
 
             <div class="absolute inset-0 hero-section"></div>
 
