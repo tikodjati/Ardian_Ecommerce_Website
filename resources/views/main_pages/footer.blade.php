@@ -1,49 +1,220 @@
-<!-- Footer -->
-    <footer class="bg-white text-black py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="font-semibold mb-4">About Louis Vuitton</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Our Story</a></li>
-                        <li><a href="#" class="hover:text-white">Careers</a></li>
-                        <li><a href="#" class="hover:text-white">News</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Customer Service</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-white">Shipping</a></li>
-                        <li><a href="#" class="hover:text-white">Returns</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Collections</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Men</a></li>
-                        <li><a href="#" class="hover:text-white">Women</a></li>
-                        <li><a href="#" class="hover:text-white">Accessories</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2024 Louis Vuitton. All rights reserved.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louis Vuitton Footer - Tailwind</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'saveur': ['saveurSans', 'serif'], // Fallback ke serif
+                        'jost': ['jost', 'sans-serif'],
+                        'jost-light': ['jost_light', 'sans-serif'],
+                    },
+                    screens: {
+                        'md': '1025px', // Sesuaikan dengan breakpoint media query CSS lama anda
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @font-face { font-family: saveurSans; src: url(fonts/Saveur_sans.otf); }
+        @font-face { font-family: jost; src: url(fonts/Jost.ttf); }
+        @font-face { font-family: jost_light; src: url(fonts/Jost_light.ttf); }
+        
+        /* Utility untuk accordion transition */
+        .panel { transition: max-height 0.3s ease-out; }
+    </style>
+</head>
+<body class="m-0 p-0 overflow-x-hidden w-full">
+    <section class="hidden md:flex flex-col px-[4.5rem] mb-10 w-full">
+    <hr class="border-t border-gray-300 mb-8 w-full opacity-40">
+    
+    <div class="flex justify-between w-full">
+        <div class="flex-1 flex flex-col gap-2">
+            <div class="font-jost text-[0.8rem] font-semibold mb-2 tracking-wide">HELP</div>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">
+                You can <span class="underline underline-offset-4">call</span> or <span class="underline underline-offset-4">email us</span>.
+            </a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">FAQ's</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Product Care</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Stores</a>
+        </div>
+
+        <div class="flex-1 flex flex-col gap-2">
+            <div class="font-jost text-[0.8rem] font-semibold mb-2 tracking-wide">SERVICES</div>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Repairs</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Personalization</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Art of Gifting</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Download our Apps</a>
+        </div>
+
+        <div class="flex-1 flex flex-col gap-2">
+            <div class="font-jost text-[0.8rem] font-semibold mb-2 tracking-wide">ABOUT LOUIS VUITTON</div>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Fashion Shows</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Art & Culture</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">La Maison</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Sustainability</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Latest News</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Careers</a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">Foundation Louis Vuitton</a>
+        </div>
+
+        <div class="flex-1 flex flex-col gap-2">
+            <div class="font-jost text-[0.8rem] font-semibold mb-2 tracking-wide">CONNECT</div>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600">
+                <span class="underline underline-offset-4">Sign up</span> for first access to latest collections, campaigns and videos.
+            </a>
+            <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline hover:text-gray-600 mt-2">Follow Us</a>
+        </div>
+    </div>
+
+    <hr class="border-t border-gray-300 mt-12 w-full opacity-40">
+</section>
+
+    <footer class="hidden md:flex justify-between items-center py-5">
+        <a href="#" class="font-jost-light text-[0.9rem] px-[4.5rem] no-underline text-black flex items-center gap-2">
+            <i class="fa-solid fa-globe text-black/80"></i>
+            <span class="underline underline-offset-[6px] decoration-1">ENGLISH (INTL)</span>
+        </a>
+        <ul class="flex justify-end items-center list-none pr-[50px]">
+            <li class="mx-[10px] mr-[30px]">
+                <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline">Sitemap</a>
+            </li>
+            <li class="mx-[10px] mr-[30px]">
+                <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline">Legal & privacy</a>
+            </li>
+            <li class="mx-[10px] mr-[30px]">
+                <a href="#" class="font-jost-light text-[0.9rem] text-black no-underline">Cookies</a>
+            </li>
+        </ul>
+    </footer>
+
+    <div class="mt-[45px] mb-[50px] text-center font-saveur text-black
+                text-[3rem] md:text-[1.3em]">
+        Louis Vuitton
+    </div>
+
+    <div class="block md:hidden w-full">
+        
+        <hr class="border-t border-gray-300 mx-[4.5rem] block">
+        <button class="accordion w-full text-left py-[30px] px-[4.5rem] bg-white text-black font-jost-light text-[2.4rem] flex justify-between items-center cursor-pointer outline-none">
+            Help
+            <span class="icon text-3xl font-medium transition-transform duration-300">+</span>
+        </button>
+        <div class="panel max-h-0 overflow-hidden bg-white mx-[4.5rem]">
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">
+                You can <span class="underline underline-offset-[12px]">call</span> or <span class="underline underline-offset-[12px]">email us</span>.
+            </a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">FAQ's</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Product Care</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Stores</a>
+        </div>
+
+        <hr class="border-t border-gray-300 mx-[4.5rem] block">
+        <button class="accordion w-full text-left py-[30px] px-[4.5rem] bg-white text-black font-jost-light text-[2.4rem] flex justify-between items-center cursor-pointer outline-none">
+            Services
+            <span class="icon text-3xl font-medium transition-transform duration-300">+</span>
+        </button>
+        <div class="panel max-h-0 overflow-hidden bg-white mx-[4.5rem]">
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Repairs</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Personalization</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Art of Gifting</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Download our Apps</a>
+        </div>
+
+        <hr class="border-t border-gray-300 mx-[4.5rem] block">
+        <button class="accordion w-full text-left py-[30px] px-[4.5rem] bg-white text-black font-jost-light text-[2.4rem] flex justify-between items-center cursor-pointer outline-none">
+            About Louis Vuitton
+            <span class="icon text-3xl font-medium transition-transform duration-300">+</span>
+        </button>
+        <div class="panel max-h-0 overflow-hidden bg-white mx-[4.5rem]">
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Fashion Shows</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Art & Culture</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">La Maison</a>
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">Sustainability</a>
+        </div>
+
+        <hr class="border-t border-gray-300 mx-[4.5rem] block">
+        <button class="accordion w-full text-left py-[30px] px-[4.5rem] bg-white text-black font-jost-light text-[2.4rem] flex justify-between items-center cursor-pointer outline-none">
+            Connect
+            <span class="icon text-3xl font-medium transition-transform duration-300">+</span>
+        </button>
+        <div class="panel max-h-0 overflow-hidden bg-white mx-[4.5rem]">
+            <a href="#" class="block my-[50px] mx-[20px] text-[2.3rem] font-jost-light text-black no-underline">
+                <span class="underline underline-offset-[12px]">Sign up</span> for first access to latest collections.
+            </a>
+            
+            <div class="flex flex-wrap justify-center gap-8 mt-[100px] mb-[50px] text-[60px] text-black">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-snapchat"></i>
+                <i class="fa-brands fa-pinterest-p"></i>
+                <i class="fa-brands fa-foursquare"></i>
             </div>
         </div>
+        <hr class="border-t border-gray-300 mx-[4.5rem] block">
+    </div>
+
+    <footer class="flex md:hidden flex-col items-center text-center my-[100px]">
+        <ul class="flex justify-center list-none p-0 mb-[10px] gap-5">
+            <li><a href="#" class="text-[1.5rem] font-jost-light text-black no-underline">Sitemap</a></li>
+            <li><a href="#" class="text-[1.5rem] font-jost-light text-black no-underline">Legal & privacy</a></li>
+            <li><a href="#" class="text-[1.5rem] font-jost-light text-black no-underline">Cookies</a></li>
+        </ul>
+        <div class="mt-[65px]">
+            <a href="#" class="text-[1.5rem] font-jost-light text-black no-underline flex items-center gap-4">
+                <i class="fa-solid fa-globe text-black/80"></i>
+                <span class="underline underline-offset-[20px] decoration-1">ENGLISH (INTL)</span>
+            </a>
+        </div>
     </footer>
+
+    <script>
+        const acc = document.getElementsByClassName("accordion");
+
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Toggle active state
+                const panel = this.nextElementSibling;
+                const icon = this.querySelector('.icon');
+                
+                // Jika sudah terbuka, tutup
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                    icon.textContent = "+";
+                    icon.style.transform = "rotate(0deg)";
+                } else {
+                    // Tutup panel lain (opsional, sesuaikan kebutuhan)
+                    // closeAllPanels(); 
+                    
+                    // Buka panel ini
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    icon.textContent = "−"; // Menggunakan tanda minus matematika
+                    icon.style.transform = "rotate(90deg)";
+                }
+            });
+        }
+
+        // Fungsi opsional jika ingin perilaku "satu terbuka, yang lain tutup"
+        function closeAllPanels() {
+            for (let j = 0; j < acc.length; j++) {
+                acc[j].nextElementSibling.style.maxHeight = null;
+                acc[j].querySelector('.icon').textContent = "+";
+                acc[j].querySelector('.icon').style.transform = "rotate(0deg)";
+            }
+        }
+    </script>
+</body>
+</html>

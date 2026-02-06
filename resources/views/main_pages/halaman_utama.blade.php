@@ -24,6 +24,6 @@
 
     @include('main_pages.preview')
 
-    {{-- @include('main_pages.footer') --}}
+    @include('main_pages.footer')
 </body>
 </html>
