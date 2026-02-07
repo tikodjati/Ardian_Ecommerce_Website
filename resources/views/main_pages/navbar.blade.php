@@ -97,20 +97,35 @@
             
             <nav class="space-y-0.5 max-h-[calc(100vh-250px)] overflow-y-auto">
                 <!-- Main Menu Items -->
-                <a href="#" class="block text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
-                    Collections
+                <a href="#" class="flex justify-between items-center text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
+                    <span>Collections</span>
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </a>
-                <a href="#" class="block text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
-                    New Arrivals
+                <a href="#" class="flex justify-between items-center text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
+                    <span>New Arrivals</span>
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </a>
-                <a href="#" class="block text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
-                    Categories
+                <a href="#" class="flex justify-between items-center text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
+                    <span>Categories</span>
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </a>
-                <a href="#" class="block text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
-                    About
+                <a href="#" class="flex justify-between items-center text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
+                    <span>About</span>
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </a>
-                <a href="#" class="block text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
-                    Contact
+                <a href="#" class="flex justify-between items-center text-[15px] font-medium text-gray-900 hover:bg-gray-50 transition-colors px-3 py-3.5 rounded-lg">
+                    <span>Contact</span>
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </a>
                 
                 <!-- Divider & Secondary Items -->
