@@ -25,5 +25,9 @@
     @include('main_pages.preview')
 
     @include('main_pages.footer')
+
+    @include('components.cascading-menu')
+    
+    <script src="{{ asset('js/CascadingMenu.js') }}"></script>
 </body>
 </html>

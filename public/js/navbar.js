@@ -1,112 +1,104 @@
 /**
  * NavbarUI Class
- * Mengelola interaksi navigasi, menu sidebar, dan pencarian.
+ * Menghandle: Search Overlay, Unified Cascading Menu dengan Fitur Toggle
  */
 class NavbarUI {
     constructor() {
-        // 1. Inisialisasi Elemen DOM
         this.dom = {
             nav: document.getElementById('main-nav'),
             backdrop: document.getElementById('menu-backdrop'),
             
-            // Search Elements
+            // Search
             searchOverlay: document.getElementById('search-overlay'),
             searchInput: document.getElementById('search-input'),
-            // Kita ambil tombol desktop & mobile sekaligus
-            searchOpenBtns: document.querySelectorAll('#btn-search-desktop, #btn-search-mobile'), 
-            searchCloseBtn: document.getElementById('btn-close-search'),
+            searchBtns: document.querySelectorAll('#btn-search-desktop, #btn-search-mobile'), 
+            searchClose: document.getElementById('btn-close-search'),
             
-            // Menu Elements (Mobile)
-            mobileMenu: document.getElementById('mobile-dropdown-menu'),
-            mobileMenuBtn: document.getElementById('mobile-menu-button'),
-            mobileCloseBtn: document.getElementById('menu-close-mobile'),
-
-            // Menu Elements (Desktop)
-            desktopMenu: document.getElementById('desktop-sidebar-menu'),
-            desktopMenuBtn: document.getElementById('desktop-menu-button'),
-            desktopCloseBtn: document.getElementById('menu-close-desktop')
+            // Unified Menu Elements
+            menuWrapper: document.getElementById('unified-menu'),
+            menuToggle: document.getElementById('menu-toggle-btn'),
+            menuClose: document.getElementById('close-menu-btn'),
+            
+            // Columns
+            col2: document.getElementById('col-level-2'),
+            col3: document.getElementById('col-level-3'),
+            col2Title: document.getElementById('col-2-title'),
+            
+            // Triggers
+            triggersL1: document.querySelectorAll('.menu-l1-trigger'), // New Arrivals, Best Sellers
+            triggersL2: document.querySelectorAll('.menu-l2-trigger'), // Tas, Baju
+            
+            // Panels
+            panelsProd: document.querySelectorAll('.level-3-panel'),
         };
 
-        // 2. State Tracking
         this.state = {
             isMenuOpen: false,
-            isSearchOpen: false
+            isSearchOpen: false,
+            currentL1: null, // Melacak Menu Utama yang aktif (misal: 'new-arrivals')
+            currentL2: null  // Melacak Kategori yang aktif (misal: 'tas')
         };
 
-        // 3. Bind Events
         this.initEvents();
     }
 
     initEvents() {
         // --- Search Events ---
-        this.dom.searchOpenBtns.forEach(btn => {
+        this.dom.searchBtns.forEach(btn => btn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.openSearch();
+        }));
+        this.dom.searchClose?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.closeSearch();
+        });
+
+        // --- Menu Open/Close ---
+        this.dom.menuToggle?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMenu();
+        });
+        this.dom.menuClose?.addEventListener('click', () => this.closeMenu());
+        this.dom.backdrop?.addEventListener('click', () => this.closeAll());
+
+        // --- CASCADING LOGIC (LEVEL 1: SIDEBAR) ---
+        this.dom.triggersL1.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.openSearch();
+                e.preventDefault();
+                const id = btn.dataset.id;
+                const title = btn.querySelector('span').innerText;
+                this.handleLevel1Click(btn, id, title);
             });
         });
 
-        if(this.dom.searchCloseBtn) {
-            this.dom.searchCloseBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.closeSearch();
+        // --- CASCADING LOGIC (LEVEL 2: KATEGORI) ---
+        this.dom.triggersL2.forEach(btn => {
+            // Kita gunakan 'click' saja agar toggle berfungsi nyaman di desktop/mobile
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const cat = btn.dataset.cat;
+                this.handleLevel2Click(btn, cat);
             });
-        }
+        });
 
-        // --- Menu Events ---
-        // Mobile Toggle
-        if(this.dom.mobileMenuBtn) {
-            this.dom.mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleMenu('mobile');
-            });
-        }
-        
-        // Desktop Toggle
-        if(this.dom.desktopMenuBtn) {
-            this.dom.desktopMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleMenu('desktop');
-            });
-        }
-
-        // Close Buttons
-        if(this.dom.mobileCloseBtn) this.dom.mobileCloseBtn.addEventListener('click', () => this.closeAll());
-        if(this.dom.desktopCloseBtn) this.dom.desktopCloseBtn.addEventListener('click', () => this.closeAll());
-
-        // --- Global Events ---
-        // Klik backdrop menutup segalanya
-        if(this.dom.backdrop) {
-            this.dom.backdrop.addEventListener('click', () => this.closeAll());
-        }
-
-        // Tombol ESC menutup segalanya
+        // ESC Key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') this.closeAll();
         });
     }
 
-    // --- Logic Methods ---
-
+    // --- Search Methods ---
     openSearch() {
-        this.closeMenu(); // Tutup menu jika ada
+        this.closeMenu();
         this.state.isSearchOpen = true;
-
-        // Visual: Navbar jadi putih
         this.dom.nav.classList.add('search-active');
-        
-        // Visual: Overlay muncul
         this.dom.searchOverlay.classList.add('search-open');
-        
-        // Focus: Input siap diketik (delay dikit biar transisi smooth)
         setTimeout(() => this.dom.searchInput.focus(), 150);
     }
 
     closeSearch() {
         this.state.isSearchOpen = false;
         this.dom.searchOverlay.classList.remove('search-open');
-        
-        // Kembalikan navbar jadi transparan (jika tidak di-hover)
         setTimeout(() => {
             if(!this.dom.nav.matches(':hover') && !this.state.isMenuOpen) {
                 this.dom.nav.classList.remove('search-active');
@@ -114,43 +106,131 @@ class NavbarUI {
         }, 300);
     }
 
-    toggleMenu(type) {
-        if(this.state.isMenuOpen) {
-            this.closeAll();
-        } else {
-            this.openMenu(type);
-        }
+    // --- Menu Methods ---
+    toggleMenu() {
+        this.state.isMenuOpen ? this.closeMenu() : this.openMenu();
     }
 
-    openMenu(type) {
-        this.closeSearch(); // Tutup search jika ada
+    openMenu() {
+        this.closeSearch();
         this.state.isMenuOpen = true;
-
-        // Visual
-        this.dom.nav.classList.add('nav-active');
+        
+        // this.dom.nav.classList.add('nav-active'); // Opsional jika ingin navbar putih saat menu buka
         this.dom.backdrop.classList.remove('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = 'hidden'; // Stop scroll
-
-        if(type === 'mobile') {
-            this.dom.mobileMenu.classList.remove('-translate-y-full', 'opacity-0');
-        } else {
-            this.dom.desktopMenu.classList.remove('-translate-x-full');
-        }
+        this.dom.menuWrapper.classList.remove('-translate-x-full');
+        document.body.style.overflow = 'hidden';
     }
 
     closeMenu() {
         this.state.isMenuOpen = false;
+        
+        this.dom.menuWrapper.classList.add('-translate-x-full');
+        this.dom.backdrop.classList.add('opacity-0', 'pointer-events-none');
         document.body.style.overflow = '';
 
-        // Reset semua posisi menu
-        this.dom.mobileMenu.classList.add('-translate-y-full', 'opacity-0');
-        this.dom.desktopMenu.classList.add('-translate-x-full');
-        this.dom.backdrop.classList.add('opacity-0', 'pointer-events-none');
+        // Reset tampilan menu setelah animasi selesai
+        setTimeout(() => this.resetMenuState(), 300);
 
-        // Cek navbar background
         if(!this.state.isSearchOpen && !this.dom.nav.matches(':hover')) {
             this.dom.nav.classList.remove('nav-active');
         }
+    }
+
+    // --- LOGIKA TOGGLE LEVEL 1 ---
+    handleLevel1Click(btn, id, title) {
+        // CEK: Apakah user mengklik menu yang SUDAH aktif?
+        if (this.state.currentL1 === id) {
+            // YA: Tutup Level 2 (dan otomatis Level 3)
+            this.closeLevel2();
+            return; 
+        }
+
+        // TIDAK: Buka Level 2 baru
+        this.state.currentL1 = id; // Set aktif baru
+
+        // 1. Reset semua style tombol L1
+        this.dom.triggersL1.forEach(el => {
+            el.classList.remove('text-black', 'font-bold');
+            el.classList.add('text-gray-900');
+        });
+        // 2. Highlight tombol yang diklik
+        btn.classList.remove('text-gray-900');
+        btn.classList.add('text-black', 'font-bold');
+
+        // 3. Tampilkan Kolom 2, Sembunyikan Kolom 3 (Reset L2 selection)
+        this.dom.col2.classList.remove('hidden');
+        this.dom.col3.classList.add('hidden'); // Selalu tutup L3 saat ganti L1
+        this.dom.col2Title.innerText = title;
+
+        // 4. Reset highlight tombol L2
+        this.dom.triggersL2.forEach(el => el.classList.remove('text-black', 'font-bold', 'pl-2'));
+        this.state.currentL2 = null; 
+    }
+
+    // Fungsi Helper: Menutup Level 2
+    closeLevel2() {
+        this.dom.col2.classList.add('hidden');
+        this.dom.col3.classList.add('hidden'); // Level 3 juga harus tutup
+        
+        // Hapus highlight dari tombol L1
+        this.dom.triggersL1.forEach(el => {
+            el.classList.remove('text-black', 'font-bold');
+            el.classList.add('text-gray-900');
+        });
+        
+        this.state.currentL1 = null;
+        this.state.currentL2 = null;
+    }
+
+    // --- LOGIKA TOGGLE LEVEL 2 ---
+    handleLevel2Click(btn, cat) {
+        if(!this.state.currentL1) return;
+
+        // CEK: Apakah user mengklik kategori yang SUDAH aktif?
+        if (this.state.currentL2 === cat) {
+            // YA: Tutup Level 3 saja
+            this.closeLevel3();
+            return;
+        }
+
+        // TIDAK: Buka Level 3 baru
+        this.state.currentL2 = cat;
+
+        // 1. Reset highlight semua tombol L2
+        this.dom.triggersL2.forEach(el => {
+            el.classList.remove('text-black', 'font-bold', 'pl-2');
+            el.classList.add('text-gray-500');
+        });
+        // 2. Highlight tombol yang diklik
+        btn.classList.remove('text-gray-500');
+        btn.classList.add('text-black', 'font-bold', 'pl-2');
+
+        // 3. Tampilkan Kolom 3
+        this.dom.col3.classList.remove('hidden');
+
+        // 4. Cari Panel Produk yang Cocok
+        const targetId = `panel-prod-${this.state.currentL1}-${cat}`;
+        this.dom.panelsProd.forEach(p => p.classList.add('hidden'));
+        
+        const targetPanel = document.getElementById(targetId);
+        if(targetPanel) targetPanel.classList.remove('hidden');
+    }
+
+    // Fungsi Helper: Menutup Level 3
+    closeLevel3() {
+        this.dom.col3.classList.add('hidden');
+        
+        // Hapus highlight dari tombol L2
+        this.dom.triggersL2.forEach(el => {
+            el.classList.remove('text-black', 'font-bold', 'pl-2');
+            el.classList.add('text-gray-500');
+        });
+
+        this.state.currentL2 = null;
+    }
+
+    resetMenuState() {
+        this.closeLevel2(); // Ini akan mereset semuanya (L1 active, L2 visible, L3 visible)
     }
 
     closeAll() {
@@ -159,7 +239,6 @@ class NavbarUI {
     }
 }
 
-// Inisialisasi saat DOM siap
 document.addEventListener('DOMContentLoaded', () => {
     new NavbarUI();
 });
