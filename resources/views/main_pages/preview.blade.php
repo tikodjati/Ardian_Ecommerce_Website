@@ -12,6 +12,7 @@
     <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
       <!-- Product 1 -->
       <div class="group cursor-pointer">
+        <a href="{{ url('/product/detail') }}">
         <div class="relative overflow-hidden bg-gray-100 rounded-sm mb-3 sm:mb-4">
           <img 
             src="{{ asset('images/Gambar1.jpeg') }}" 
@@ -23,15 +24,17 @@
         </div>
         <div class="text-center sm:text-center">
           <h3 class="text-xs sm:text-sm font-medium text-gray-900 mb-1 sm:mb-2 tracking-wide uppercase">
-            <a href="#" class="hover:text-gray-600 transition-colors">
+            <a href="" class="hover:text-gray-600 transition-colors">
               Tas Raimu Ancok
             </a>
           </h3>
           {{-- <p class="text-xs sm:text-sm text-gray-600 font-light"></p> --}}
         </div>
+        </a>
       </div>
 
        <div class="group cursor-pointer">
+        <a href="{{ url('/product/detail') }}">
         <div class="relative overflow-hidden bg-gray-100 rounded-sm mb-3 sm:mb-4">
           <img 
             src="{{ asset('images/Gambar1.jpeg') }}" 
@@ -49,9 +52,11 @@
           </h3>
           {{-- <p class="text-xs sm:text-sm text-gray-600 font-light"></p> --}}
         </div>
+        </a>
       </div>
 
        <div class="group cursor-pointer">
+        <a href="{{ url('/product/detail') }}">
         <div class="relative overflow-hidden bg-gray-100 rounded-sm mb-3 sm:mb-4">
           <img 
             src="{{ asset('images/Gambar1.jpeg') }}" 
@@ -69,10 +74,12 @@
           </h3>
           {{-- <p class="text-xs sm:text-sm text-gray-600 font-light"></p> --}}
         </div>
+        </a>
       </div>
 
       <!-- Product 2 -->
       <div class="group cursor-pointer">
+        <a href="{{ url('/product/detail') }}">
         <div class="relative overflow-hidden bg-gray-100 rounded-sm mb-3 sm:mb-4">
           <img 
             src="{{ asset('images/Gambar2.jpeg') }}" 
@@ -89,6 +96,7 @@
           </h3>
           {{-- <p class="text-xs sm:text-sm text-gray-600 font-light"></p> --}}
         </div>
+        </a>
       </div>
 
       <!-- Product 3 -->

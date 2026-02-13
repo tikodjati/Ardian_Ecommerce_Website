@@ -200,26 +200,30 @@
 <style>
     /* Default Text Color: White */
     .nav-text { color: white; }
-    
-    /* Hover State or Active Classes: Background White, Text Black */
+
     #main-nav:hover, 
     #main-nav.nav-active, 
-    #main-nav.search-active {
+    #main-nav.search-active,
+    #main-nav.scrolled {
         background-color: white !important;
         box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
     }
     
     #main-nav:hover .nav-text, 
     #main-nav.nav-active .nav-text, 
-    #main-nav.search-active .nav-text {
-        color: #111827 !important; /* Tailwind gray-900 (Black) */
+    #main-nav.search-active .nav-text,
+    #main-nav.scrolled .nav-text {
+        color: #111827 !important;
     }
     
+    /* Animasi Search */
     .search-open {
         opacity: 1 !important;
         visibility: visible !important;
         transform: translateY(0) scaleY(1) !important;
     }
+    
+    /* Animasi Menu */
     @keyframes fadeInRight {
         from { opacity: 0; transform: translateX(15px); }
         to { opacity: 1; transform: translateX(0); }

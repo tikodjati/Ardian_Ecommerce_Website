@@ -17,3 +17,7 @@ Route::get('/halaman_utama', function () {
 Route::get('/produk', function () {
     return view('main_pages.halaman_utama');
 });
+
+Route::get('/product/detail', function () {
+    return view('main_pages.detail_produk');
+});
