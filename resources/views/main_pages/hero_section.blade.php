@@ -25,7 +25,7 @@
                     <h2 class="text-xl md:text-xl lg:text-xl font-light mb-6 tracking-wide">
                         Pre-order Now: Men's Spring-Summer 2026 Show
                     </h2>
-                    <a href="#" class="inline-block border-2 border-white px-8 py-3 hover:bg-white hover:text-gray-900 transition-all duration-300">
+                    <a href="product" class="inline-block border-2 border-white px-8 py-3 hover:bg-white hover:text-gray-900 transition-all duration-300">
                         <span class="text-sm font-medium tracking-wider">Discover the Collection</span>
                     </a>
                 </div>
