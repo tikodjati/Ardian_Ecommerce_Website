@@ -1,4 +1,4 @@
-@php
+{{-- @php
     // --- DATA PRODUK UNTUK KOLOM KANAN ---
     // Struktur: [ID_TRIGGER_KIRI][ID_KATEGORI_TENGAH]
     $productsData = [
@@ -144,4 +144,4 @@
     .animate-fade-in {
         animation: fadeInRight 0.4s ease-out forwards;
     }
-</style>
+</style> --}}

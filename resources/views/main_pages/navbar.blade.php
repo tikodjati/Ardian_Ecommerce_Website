@@ -1,41 +1,71 @@
 @php
     // --- DATA PRODUK (Sama seperti sebelumnya) ---
-    $productsData = [
-        'new-arrivals' => [
-            'tas' => [
-                'label' => 'New In: Bags',
-                'items' => [
-                    ['name' => 'Go-14 MM', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Go-14'],
-                    ['name' => 'Capucines Mini', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Capucines'],
-                    ['name' => 'Side Trunk', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Side+Trunk'],
-                    ['name' => 'Coussin BB', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Coussin'],
-                ]
-            ],
-            'baju' => [
-                'label' => 'New In: Ready to Wear',
-                'items' => [
-                    ['name' => 'Monogram Coat', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Coat'],
-                    ['name' => 'Silk Dress', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Dress'],
-                    ['name' => 'Tweed Jacket', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Jacket'],
-                ]
+    $products = [
+    'new-arrivals' => [
+        'tas' => [
+            'label' => 'New In: Bags',
+            'items' => [
+                ['name' => 'Go-14 MM', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Go-14'],
+                ['name' => 'Capucines Mini', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Capucines'],
+                ['name' => 'Side Trunk', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Side+Trunk'],
+                ['name' => 'Coussin BB', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Coussin'],
             ]
         ],
-        'best-sellers' => [
-            'tas' => [
-                'label' => 'Best Sellers: Bags',
-                'items' => [
-                    ['name' => 'Neverfull MM', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Neverfull'],
-                    ['name' => 'Speedy 25', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Speedy'],
-                ]
-            ],
-            'baju' => [
-                'label' => 'Best Sellers: Clothing',
-                'items' => [
-                    ['name' => 'Classic T-Shirt', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=T-Shirt'],
-                ]
+        'baju' => [
+            'label' => 'New In: Ready to Wear',
+            'items' => [
+                ['name' => 'Monogram Coat', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Coat'],
+                ['name' => 'Silk Dress', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Dress'],
+                ['name' => 'Tweed Jacket', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Jacket'],
             ]
         ]
-    ];
+    ],
+    'best-sellers' => [
+        'tas' => [
+            'label' => 'Best Sellers: Bags',
+            'items' => [
+                ['name' => 'Neverfull MM', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Neverfull'],
+                ['name' => 'Speedy 25', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Speedy'],
+            ]
+        ],
+        'baju' => [
+            'label' => 'Best Sellers: Clothing',
+            'items' => [
+                ['name' => 'Classic T-Shirt', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=T-Shirt'],
+            ]
+        ]
+    ],
+    'limited-editions' => [
+        'tas' => [
+            'label' => 'Limited Edition: Artist Series',
+            'items' => [
+                ['name' => 'Artycapucines', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Artycapucines'],
+                ['name' => 'Horizon 55 Silver', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Horizon+Ltd'],
+            ]
+        ],
+        'baju' => [
+            'label' => 'Limited Edition: Runway Pieces',
+            'items' => [
+                ['name' => 'Embroidered Gown', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Gown'],
+            ]
+        ]
+    ],
+    'sale' => [
+        'tas' => [
+            'label' => 'Exclusive Offers: Bags',
+            'items' => [
+                ['name' => 'Alma BB (Pastel)', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Alma+Sale'],
+            ]
+        ],
+        'baju' => [
+            'label' => 'Exclusive Offers: Ready to Wear',
+            'items' => [
+                ['name' => 'Wool Cardigan', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Cardigan+Sale'],
+                ['name' => 'Cotton Shirt', 'img' => 'https://placehold.co/300x400/f6f5f3/333?text=Shirt+Sale'],
+            ]
+        ]
+    ]
+];
 @endphp
 
 <nav id="main-nav" class="fixed top-0 left-0 right-0 z-40 bg-transparent transition-all duration-300 ease-in-out p-[15px]">
@@ -111,8 +141,17 @@
                         <span>Best Sellers</span>
                         <svg class="w-4 h-4 transform transition-transform group-hover:translate-x-1 lg:opacity-0 lg:-translate-x-2 lg:group-hover:opacity-100 lg:group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </button>
-                    <a href="#" class="block py-3 text-[15px] text-gray-900 hover:text-gray-600">Limited Edition</a>
-                    <a href="#" class="block py-3 text-[15px] text-gray-900 hover:text-gray-600">Sale</a>
+
+                    <button data-id="limited-editions" class="menu-l1-trigger w-full text-left py-3 text-[15px] text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center group">
+                        <span>Limited Edition</span>
+                        <svg class="w-4 h-4 transform transition-transform group-hover:translate-x-1 lg:opacity-0 lg:-translate-x-2 lg:group-hover:opacity-100 lg:group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                    <button data-id="sale" class="menu-l1-trigger w-full text-left py-3 text-[15px] text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center group">
+                        <span>Sale</span>
+                        <svg class="w-4 h-4 transform transition-transform group-hover:translate-x-1 lg:opacity-0 lg:-translate-x-2 lg:group-hover:opacity-100 lg:group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                    {{-- <a href="#" class="block py-3 text-[15px] text-gray-900 hover:text-gray-600">Limited Edition</a>
+                    <a href="#" class="block py-3 text-[15px] text-gray-900 hover:text-gray-600">Sale</a> --}}
                 </nav>
             </div>
             <div class="mb-10">
@@ -158,40 +197,41 @@
     </div>
 
     <div id="col-level-3" 
-         class="hidden pointer-events-auto shadow-xl bg-white
-                fixed inset-0 z-[80] w-full h-full 
-                lg:static lg:z-auto lg:w-[55%] lg:h-full lg:shadow-none">
-        <div class="lg:hidden h-20 flex items-center px-6 border-b border-gray-100 z-50 relative bg-white">
-            <button id="back-to-l2" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-900 p-2 -ml-2 hover:bg-gray-50 rounded-lg">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                Back
-            </button>
-        </div>
-        <div class="h-full overflow-y-auto p-8 pt-6 lg:pt-24">
-            @foreach($productsData as $triggerId => $categories)
-                @foreach($categories as $catId => $content)
-                    <div id="panel-prod-{{ $triggerId }}-{{ $catId }}" class="level-3-panel hidden h-full animate-fade-in">
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-100 mt-2">
-                            <h4 class="text-lg font-medium text-black">{{ $content['label'] }}</h4>
-                            <a href="#" class="text-xs uppercase tracking-wider underline hover:text-gray-600">View All</a>
-                        </div>
-                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 pb-20">
-                            @foreach($content['items'] as $product)
-                                <div class="group cursor-pointer">
-                                    <div class="aspect-[3/4] bg-[#f6f5f3] mb-3 overflow-hidden flex items-center justify-center relative">
-                                        <img src="{{ $product['img'] }}" class="w-[85%] h-auto mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
-                                    </div>
-                                    <h5 class="text-[13px] text-center text-black group-hover:underline decoration-1 underline-offset-4">
-                                        {{ $product['name'] }}
-                                    </h5>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-            @endforeach
-        </div>
+     class="hidden pointer-events-auto shadow-xl bg-white
+            fixed inset-0 z-[80] w-full h-full 
+            lg:static lg:z-auto lg:w-[55%] lg:h-full lg:shadow-none">
+    <div class="lg:hidden h-20 flex items-center px-6 border-b border-gray-100 z-50 relative bg-white">
+        <button id="back-to-l2" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-900 p-2 -ml-2 hover:bg-gray-50 rounded-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back
+        </button>
     </div>
+    <div class="h-full overflow-y-auto p-8 pt-6 lg:pt-24">
+        {{-- PERBAIKAN: Menggunakan $products sesuai definisi di atas --}}
+        @foreach($products as $triggerId => $categories)
+            @foreach($categories as $catId => $content)
+                <div id="panel-prod-{{ $triggerId }}-{{ $catId }}" class="level-3-panel hidden h-full animate-fade-in">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-100 mt-2">
+                        <h4 class="text-lg font-medium text-black">{{ $content['label'] }}</h4>
+                        <a href="#" class="text-xs uppercase tracking-wider underline hover:text-gray-600">View All</a>
+                    </div>
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 pb-20">
+                        @foreach($content['items'] as $product)
+                            <div class="group cursor-pointer">
+                                <div class="aspect-[3/4] bg-[#f6f5f3] mb-3 overflow-hidden flex items-center justify-center relative">
+                                    <img src="{{ $product['img'] }}" class="w-[85%] h-auto mix-blend-multiply transition-transform duration-700 group-hover:scale-110" alt="{{ $product['name'] }}">
+                                </div>
+                                <h5 class="text-[13px] text-center text-black group-hover:underline decoration-1 underline-offset-4">
+                                    {{ $product['name'] }}
+                                </h5>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        @endforeach
+    </div>
+</div>
 
 </div>
 

@@ -21,3 +21,7 @@ Route::get('/produk', function () {
 Route::get('/product/detail', function () {
     return view('main_pages.detail_produk');
 });
+
+Route::get('/product', function () {
+    return view('main_pages.product');
+});
