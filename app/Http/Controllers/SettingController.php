@@ -13,6 +13,8 @@ class SettingController extends Controller
     public function index()
     {
         //
+        $settings = Setting::all();
+        return view('admin.settings.index', compact('settings'));
     }
 
     /**
@@ -45,6 +47,7 @@ class SettingController extends Controller
     public function edit(Setting $setting)
     {
         //
+        return view('admin.settings.edit', compact('setting'));
     }
 
     /**
@@ -53,6 +56,11 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
         //
+        $setting->update([
+            'value' => $request->value
+        ]);
+
+        return redirect()->route('settings.index');
     }
 
     /**

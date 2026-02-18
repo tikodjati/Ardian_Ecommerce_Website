@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CollectionController extends Controller
 {
@@ -13,6 +14,8 @@ class CollectionController extends Controller
     public function index()
     {
         //
+        $collections = Collection::all();
+        return view('admin.collections.index', compact('collections'));
     }
 
     /**
@@ -21,6 +24,7 @@ class CollectionController extends Controller
     public function create()
     {
         //
+        return view('admin.collections.create');
     }
 
     /**
@@ -29,6 +33,18 @@ class CollectionController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        Collection::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+            'is_active' => $request->has('is_active')
+        ]);
+
+        return redirect()->route('collections.index');
     }
 
     /**
@@ -45,6 +61,7 @@ class CollectionController extends Controller
     public function edit(Collection $collection)
     {
         //
+        return view('admin.collections.edit', compact('collection'));
     }
 
     /**
@@ -53,6 +70,14 @@ class CollectionController extends Controller
     public function update(Request $request, Collection $collection)
     {
         //
+        $collection->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+            'is_active' => $request->has('is_active')
+        ]);
+
+        return redirect()->route('collections.index');
     }
 
     /**
@@ -61,5 +86,7 @@ class CollectionController extends Controller
     public function destroy(Collection $collection)
     {
         //
+        $collection->delete();
+        return redirect()->route('collections.index');
     }
 }

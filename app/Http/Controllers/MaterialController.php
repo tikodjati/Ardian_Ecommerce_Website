@@ -13,6 +13,8 @@ class MaterialController extends Controller
     public function index()
     {
         //
+        $materials = Material::all();
+        return view('admin.materials.index', compact('materials'));
     }
 
     /**
@@ -21,6 +23,7 @@ class MaterialController extends Controller
     public function create()
     {
         //
+        return view('admin.materials.create');
     }
 
     /**
@@ -29,6 +32,15 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        Material::create([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('materials.index');
     }
 
     /**
@@ -45,6 +57,7 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         //
+        return view('admin.materials.edit', compact('material'));
     }
 
     /**
@@ -53,6 +66,11 @@ class MaterialController extends Controller
     public function update(Request $request, Material $material)
     {
         //
+        $material->update([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('materials.index');
     }
 
     /**
@@ -61,5 +79,7 @@ class MaterialController extends Controller
     public function destroy(Material $material)
     {
         //
+        $material->delete();
+        return redirect()->route('materials.index');
     }
 }

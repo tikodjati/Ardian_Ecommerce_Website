@@ -41,6 +41,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('materials', MaterialController::class);
     Route::resource('pages', PageController::class);
     Route::resource('settings', SettingController::class);
+    Route::delete('/products/image/{id}', [ProductController::class, 'deleteImage'])
+        ->name('products.deleteImage');
 
 });
 

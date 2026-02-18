@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -13,6 +14,8 @@ class PageController extends Controller
     public function index()
     {
         //
+        $pages = Page::all();
+        return view('admin.pages.index', compact('pages'));
     }
 
     /**
@@ -21,6 +24,7 @@ class PageController extends Controller
     public function create()
     {
         //
+        return view('admin.pages.create');
     }
 
     /**
@@ -29,6 +33,20 @@ class PageController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        Page::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'content' => $request->content,
+            'is_active' => $request->has('is_active')
+        ]);
+
+        return redirect()->route('pages.index');
+
     }
 
     /**
@@ -45,6 +63,7 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         //
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
@@ -53,6 +72,14 @@ class PageController extends Controller
     public function update(Request $request, Page $page)
     {
         //
+        $page->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'content' => $request->content,
+            'is_active' => $request->has('is_active')
+        ]);
+
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -61,5 +88,7 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         //
+        $page->delete();
+        return redirect()->route('pages.index');
     }
 }

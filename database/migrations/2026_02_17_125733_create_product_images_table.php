@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('image_url');
             $table->boolean('is_primary')->default(false);
             $table->integer('sort_order')->default(0);
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
