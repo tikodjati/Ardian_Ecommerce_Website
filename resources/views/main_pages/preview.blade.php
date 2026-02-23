@@ -139,5 +139,10 @@
         </div>
       </div>
     </div>
+    <div class="mt-12 sm:mt-16 flex justify-center">
+      <a href="product" class="inline-block px-8 py-4 border border-gray-900 text-xs sm:text-sm font-medium uppercase tracking-[0.15em] text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300">
+        Discover the Collection
+      </a>
+    </div>  
   </div>
 </div>
